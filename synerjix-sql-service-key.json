@@ -1,0 +1,13 @@
+{
+  "type": "service_account",
+  "project_id": "inbound-byway-457408-c9",
+  "private_key_id": "5bece90c605edefd42f76cb40b91b0208f571590",
+  "private_key": "-----BEGIN PRIVATE KEY-----\nMIIEvAIBADANBgkqhkiG9w0BAQEFAASCBKYwggSiAgEAAoIBAQCY5aWO+9h1CyH6\njhhhNajxh6RoVfI6Cm+JrXOTICkpWgQIavNtmT76rek8dtgafRqunA5+qW5KSXJK\nX2MNgvYMAQWj38/r4Iopm98kdd6RS1UXK84m71vBm/hunoAGME+RxKCA0NHoDlAm\nyTaHoUso/c3D/PKx9P3d8VajZQ5czm0Gi4uOb/sdMpCvJCT+WsYq9YhS1OvjpL7U\nRu71fxLCT6qz3vz/1EAaGcC/duU4v84KipB69ZxAY5FO/YRQRZLj/TR88HAcQEVm\nyvpKkV6A17lm5xT3akpJa80+h89pE3mTlrIeKmgHYue7e/MOg/3CI2n8Pqu85sp9\njSwGWL7VAgMBAAECggEALzQO9eLIw/HI7rq5yiEv5El1N4T5QHQCVWYIXW67ZnnU\n7uhd+QMrz2arsDAcrajb+PZS/0W9uA+OymlCgmRhI/mYzSwG3BK5dPkbXf1J1l+E\niJ/MiHazREWr4DLs4Xw+xIkI6FwPwe3RTvgl7p+cPa6FvTE1mD1DtyaQEefcFEho\nWrzrSiRxarsrYbfvGzHqdKoSO3Q8ioBW+DJ1WLCDSw17mzvr3ssdolcGqwQmf2ME\nYOfY5OOIBRqdxDr7Qfgr4KoLJm6SJkyfJadn7uqiQlLXjlf/zIVBwclGPL44pEfB\ne6uyKclTLFdpi3ehBkVDSuBznEh9666rU9JWjF/sbQKBgQDOL52gfIIWFMqt/HDT\nHPSkK4bmFiKn3VPSwiSx4noMTvWiZtvxhyTJMfOn9Y/un7Gx1pHGnxyPetXaBTRv\n51lZ4pDwsBHlm4iHGp9XT5//yHcCCMfszs6n+vza8HczSBAfFu8E62EjiUD0MaBA\nytZhYsRhHhy2nK2zNEm2WfQlowKBgQC91iqwNZmvPpOpf0BCZF2fPQ5pe8n2zyb8\nSOBJTrdjmsE0vYZW6OoD6g0Op0Y7F5zPIxPn0s76xYunvXiqkk3QaJsYLkXEJlFd\nk92gPkKY8rE9KqGadKL+ixOu2o2zhGtmFX8AJIh/2aqwezRL18XvRUWsNBSYA2FZ\n9YumlE8hJwKBgBBqliBLCYh8i06jBNCqQ4g2tvzm0kePRbdIIefP4mvMdZ5Clkx6\nuCEUyxOaZ6VWLa29KcoorPt3ikNbmrs2LlULxwKC4knnwk0Pf5RSEKkq6t7MmC5w\noN+bCjrcXoFEwZPYHZvEqe1MZlGLCflerQb/+CbLYPnhK6tTBHNyYhAFAoGAVMsJ\nrEV0zQL9f9MYB8++xbbG7jTdxEFJH50JmZTwcywXqpARJlbI2FC93lK3GwP0Bc2c\nQYs26mo8dAM8l6vb2AAxbn6UqQWYiFzYvI+yvZCBvFmDb3MzrtC+TPbQHmRCeImX\nfZ/T3I+EH2oYtNu/TJ27fiyRGklAPadg5loOcjcCgYBd+yhUkjP9D6Ws4srnJoWM\nhet4DJ0T7QZ7ekATLamsEpNlY10Vsm/qM7XdkCkLZ+xWbx4YbsNs1RUAhnBkMqW7\n2I/7QVNQlUjQ1DQ+6L92mDSrl4AGuMtpPjaEhhYJCs/n3gb+Wz7vJQ+xqB5MwxG7\nOd0dIHlNtn9gw1bXZJmcYw==\n-----END PRIVATE KEY-----\n",
+  "client_email": "synerjix-sql@inbound-byway-457408-c9.iam.gserviceaccount.com",
+  "client_id": "114253581984160360384",
+  "auth_uri": "https://accounts.google.com/o/oauth2/auth",
+  "token_uri": "https://oauth2.googleapis.com/token",
+  "auth_provider_x509_cert_url": "https://www.googleapis.com/oauth2/v1/certs",
+  "client_x509_cert_url": "https://www.googleapis.com/robot/v1/metadata/x509/synerjix-sql%40inbound-byway-457408-c9.iam.gserviceaccount.com",
+  "universe_domain": "googleapis.com"
+}

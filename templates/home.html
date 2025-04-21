@@ -1,0 +1,8 @@
+{% extends 'base.html' %}
+
+{% block content %}
+    <h1>Welcome, {{ username }}!</h1>
+    <form action="{{ url_for('logout') }}" method="POST" style="margin-top: 20px;">
+        <button type="submit" class="btn btn-danger">Logout</button>
+    </form>
+{% endblock %}
