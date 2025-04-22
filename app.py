@@ -2,22 +2,38 @@ from flask import Flask, render_template, request, redirect, url_for, flash, ses
 from werkzeug.security import generate_password_hash, check_password_hash
 from sqlalchemy.sql import text
 from gcp_mysql_connect import connect_with_connector_auto_iam_authn
+from authlib.integrations.flask_client import OAuth
 import os
 
 app = Flask(__name__)
 app.secret_key = os.urandom(24)
+app.config['OAUTH2_CLIENT_ID'] = '1090965880800-kd3i98qmle7rc187s67ghtiasph7pvpe.apps.googleusercontent.com'
+app.config['OAUTH2_CLIENT_SECRET'] = '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'
+app.config['OAUTH2_META_URL'] = 'https://accounts.google.com/.well-known/openid-configuration'
 
 # Database connection setup using gcp_mysql_connect.py
 instance_conn_name = "inbound-byway-457408-c9:asia-south1:synerjix-mysql-practice"
 user_name = "synerjix-sql"
 db_name = "synerjix"
 
+oauth = OAuth(app)
+oauth.register("app",
+               client_id=app.config['OAUTH2_CLIENT_ID'],
+                client_secret=app.config['OAUTH2_CLIENT_SECRET'],
+                server_metadata_url=app.config['OAUTH2_META_URL'],
+                client_kwargs={
+                    "scope": "openid email profile https://www.googleapis.com/auth/user.birthday.read https://www.googleapis.com/auth/user.gender.read",
+                }
+)
+oauth_client = oauth.create_client('app')  # Create the OAuth client
 # Create the SQLAlchemy engine
 engine = connect_with_connector_auto_iam_authn(instance_conn_name, user_name, db_name)
 if engine:
     print("Connected to Cloud SQL MySQL instance successfully!")
 else:
     print("Failed to connect to Cloud SQL MySQL instance.")
+
+
 @app.route('/')
 def home():
     if 'username' in session:
@@ -71,8 +87,9 @@ def login():
                 user = connection.execute(select_query, {'email': email}).fetchone()
                 print(user)  # Debug: Print fetched user data
             if user and check_password_hash(user[-2], password):
-                session['user_id'] = user[0]
+                # session['user_id'] = user[0]
                 session['username'] = user[1]  # Store username in session
+                session['user_email'] = email  # Store email in session
                 # flash('Login successful!', 'success')
                 return redirect(url_for('home'))
             else:
@@ -80,6 +97,24 @@ def login():
         except Exception as e:
             flash(f'Error: {e}', 'danger')
     return render_template('login.html')
+
+@app.route('/login-google')
+def login_google():
+    return oauth_client.authorize_redirect(redirect_uri=url_for('google_callback', _external=True))
+
+@app.route('/signin-google')
+def google_callback():
+    token = oauth_client.authorize_access_token()
+    nonce = session.pop('_state', None)  # Retrieve the nonce from the session
+    user_info = oauth_client.parse_id_token(token, nonce=nonce)
+    print("User Info from token:", user_info)  # Debug: Print user info
+    email = user_info.get('email')
+    username = user_info.get('name')
+    session['username'] = username
+    session['user_email'] = email
+    print("Logged in with Google Successfully!")
+    return redirect(url_for('home'))
+
 
 @app.route('/forgot-password', methods=['GET', 'POST'])
 def forgot_password():
@@ -97,7 +132,7 @@ def about():
 @app.route('/logout', methods=['POST'])
 def logout():
     # Clear session variables
-    session.pop('user_id', None)
+    session.pop('user_email', None)
     session.pop('username', None)
     flash('You have been logged out successfully.', 'success')
     return redirect(url_for('login'))
